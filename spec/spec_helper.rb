@@ -22,7 +22,7 @@ RSpec.configure do |config|
   # config.mock_with :rr
   
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
   end
 

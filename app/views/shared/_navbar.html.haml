@@ -1,7 +1,16 @@
 %nav.top-bar
   %ul.title-area
     %li.name
-      %h1= link_to 'Go Fix Something!', root_url
+      %h1= link_to 'Go Fix Something!', root_path
     %li.toggle-topbar.menu-icon
       %a(href='#')
         %span Menu
+  %section.top-bar-section
+    %ul.right
+      - if user_signed_in?
+        %li
+          %p Hello <em>#{current_user.email}</em>
+        %li= link_to "Sign out", destroy_user_session_path, method: :delete
+      - else
+        %li= link_to "Sign up", new_user_registration_path
+        %li= link_to "Sign in", new_user_session_path
