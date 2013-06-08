@@ -21,9 +21,13 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' %>
 
-    <%= yield %>
-
+    <div id="content" class="row">
+      <div class="small-12 columns">
+        <%= yield %>
+      </div>
+    </div>
     
     <%= javascript_include_tag "application" %>
   </body>
