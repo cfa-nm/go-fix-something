@@ -1,0 +1,15 @@
+- idea = @idea || Idea.new
+
+= form_for idea do |f|
+  - if idea.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(idea.errors.count, "error")} prohibited this idea from being saved:"
+      %ul
+        - idea.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  = f.text_area :text, rows: 6, style: "height:auto"
+  = f.hidden_field :user_id, value: user_signed_in? ? current_user.id : nil
+
+  = f.submit "Okay then, let's get started!", class: %w[button expand]
