@@ -46,10 +46,15 @@ end
 gem 'haml-rails'
 gem 'zurb-foundation', '~> 4.2.1'
 gem 'high_voltage', '~> 1.2.2'
+gem 'draper'
+gem 'rails_autolink'
 gem 'devise', '~> 3.0.0.rc'
+gem 'responders'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.2'
+  gem 'cucumber-rails', github: 'cucumber/cucumber-rails', branch: 'master_rails4_test'
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'faker'
   gem 'database_cleaner', '~> 1.0.1'
 end

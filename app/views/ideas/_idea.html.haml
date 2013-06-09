@@ -1,11 +1,25 @@
 .panel
   %h6= idea.user_email
   %hr
-  = simple_format idea.text
+  = idea.html
+
   - if defined?(show_links) && show_links
-    %br
-    = link_to 'Show', idea
-    |
-    = link_to 'Edit', edit_idea_path(idea)
-    |
-    = link_to 'Destroy', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    %p
+      = link_to 'Show', idea
+      |
+      = link_to 'Edit', edit_idea_path(idea)
+      |
+      = link_to 'Destroy', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %p
+    (#{idea.vote_total})
+    - if idea.can_vote?
+      - if idea.can_downvote?
+        = link_to downvote_idea_path(idea), method: :patch, class: 'downvote' do
+          %i.entypo.thumbs-down
+      - if idea.can_upvote?
+        = link_to upvote_idea_path(idea), method: :patch, class: 'upvote' do
+          %i.entypo.thumbs-up
+      - if idea.can_cancel_vote?
+        = link_to cancel_vote_idea_path(idea), method: :patch, class: 'cancel_vote' do
+          %i.entypo.block

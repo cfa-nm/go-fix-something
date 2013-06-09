@@ -1,6 +1,8 @@
 class IdeasController < ApplicationController
   respond_to :html, :json
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea,
+    only: [:show, :edit, :update, :destroy, :upvote, :downvote, :cancel_vote]
+  decorates_assigned :idea
 
   def index
     respond_with @ideas = Idea.all
@@ -28,6 +30,27 @@ class IdeasController < ApplicationController
 
   def destroy
     respond_with @idea.destroy
+  end
+
+  def upvote
+    @idea.upvote(current_user).save
+    respond_with @idea do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
+  def downvote
+    @idea.downvote(current_user).save
+    respond_with @idea do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
+  def cancel_vote
+    @idea.cancel_vote(current_user).save
+    respond_with @idea do |format|
+      format.html { redirect_to :back }
+    end
   end
 
   private

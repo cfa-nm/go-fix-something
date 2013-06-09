@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :idea do
-    text "MyText"
+    text { Faker::Lorem.paragraph }
     user nil
   end
 end

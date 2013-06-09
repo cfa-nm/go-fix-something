@@ -1,7 +1,7 @@
 %h1 Listing ideas
 
-%ul.small-block-grid-2.large-block-grid-4
-  - @ideas.each do |idea|
+%ul.small-block-grid-2.large-block-grid-3
+  - @ideas.decorate.each do |idea|
     %li= render partial: 'idea', object: idea,
                 locals: { show_links: true }
 
