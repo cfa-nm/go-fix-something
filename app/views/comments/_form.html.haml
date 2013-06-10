@@ -1,0 +1,8 @@
+:ruby
+  idea ||= @idea
+  comment ||= idea.comments.new
+
+= form_for [idea, comment] do |f|
+  = f.text_area :text
+  = f.hidden_field :author_id, value: current_user.try(:id)
+  = f.submit

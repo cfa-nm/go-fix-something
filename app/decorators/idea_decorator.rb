@@ -1,5 +1,6 @@
 class IdeaDecorator < Draper::Decorator
   delegate_all
+  decorates_association :comments
 
   def html
     h.auto_link(h.simple_format(object.text))

@@ -6,8 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = FactoryGirl.create :user, email: 'ben@example.com', password: 'password'
+# create the dev user and 4 others
+FactoryGirl.create :user, email: 'ben@example.com', password: 'password'
+4.times do
+  FactoryGirl.create :user
+end
 
-10.times do
-  FactoryGirl.create :idea, user: user
+users = User.all
+users.each do |user|
+  5.times do
+    FactoryGirl.create :idea, user: user
+  end
+end
+
+Idea.all.each do |idea|
+  5.times do
+    attrs = FactoryGirl.attributes_for(:comment, author_id: users.sample.id)
+    idea.comments.create! attrs
+  end
 end

@@ -5,6 +5,8 @@ GoFixSomething::Application.routes.draw do
       patch :downvote
       patch :cancel_vote
     end
+
+    resources :comments, except: [:index, :show, :new]
   end
 
   devise_for :users
