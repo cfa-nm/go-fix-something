@@ -1,24 +1,32 @@
-.panel
-  %h6= idea.user_email
+%article.panel{ data: { url: idea_path(idea) } }
+  %header.clearfix
+    .left
+      %h6
+        = idea.user_email
+        = link_to '(show)', idea
+    .right
+      = link_to edit_idea_path(idea) do
+        %i.entypo.pencil
+      = link_to idea, method: :delete, data: { confirm: 'Are you sure?' } do
+        %i.entypo.cross
   %hr
-  = idea.html
-
-  - if defined?(show_links) && show_links
-    %p
-      = link_to 'Show', idea
-      |
-      = link_to 'Edit', edit_idea_path(idea)
-      |
-      = link_to 'Destroy', idea, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %p
     (#{idea.vote_total})
     - if idea.can_downvote?
       = link_to downvote_idea_path(idea), method: :patch, class: 'downvote' do
         %i.entypo.thumbs-down
-    - if idea.can_upvote?
-      = link_to upvote_idea_path(idea), method: :patch, class: 'upvote' do
-        %i.entypo.thumbs-up
+    - else
+      %i.entypo.thumbs-down
+
     - if idea.can_cancel_vote?
       = link_to cancel_vote_idea_path(idea), method: :patch, class: 'cancel_vote' do
         %i.entypo.block
+
+    - if idea.can_upvote?
+      = link_to upvote_idea_path(idea), method: :patch, class: 'upvote' do
+        %i.entypo.thumbs-up
+    - else
+      %i.entypo.thumbs-up
+
+  = idea.html

@@ -1,6 +1,10 @@
 @import "foundation_and_overrides";
 @import "entypo";
 
+.clearfix {
+  @include clearfix;
+}
+
 i {
   font-style: normal;
 }
