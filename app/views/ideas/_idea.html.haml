@@ -1,4 +1,4 @@
-%article.panel{ data: { url: idea_path(idea) } }
+%article.panel
   %header.clearfix
     .left
       %h6
@@ -11,22 +11,13 @@
         %i.entypo.cross
   %hr
 
-  %p
+  .voting-widget{ data: { idea_id: idea.id,
+                          vote_total: idea.vote_total,
+                          can_upvote: idea.can_upvote?,
+                          can_downvote: idea.can_downvote?,
+                          can_cancel_vote: idea.can_cancel_vote? } }
     (#{idea.vote_total})
-    - if idea.can_downvote?
-      = link_to downvote_idea_path(idea), method: :patch, class: 'downvote' do
-        %i.entypo.thumbs-down
-    - else
-      %i.entypo.thumbs-down
 
-    - if idea.can_cancel_vote?
-      = link_to cancel_vote_idea_path(idea), method: :patch, class: 'cancel_vote' do
-        %i.entypo.block
-
-    - if idea.can_upvote?
-      = link_to upvote_idea_path(idea), method: :patch, class: 'upvote' do
-        %i.entypo.thumbs-up
-    - else
-      %i.entypo.thumbs-up
+  %br
 
   = idea.html

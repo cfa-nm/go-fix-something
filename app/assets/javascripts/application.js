@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require js-routes
+//= require underscore
+//= require backbone
 //= require foundation
 //= require_tree .
 

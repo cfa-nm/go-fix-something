@@ -51,6 +51,10 @@ gem 'rails_autolink'
 gem 'devise', '~> 3.0.0.rc'
 gem 'responders'
 
+gem 'js-routes'
+gem 'eco'
+gem 'backbone-on-rails'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.2'
   gem 'cucumber-rails', github: 'cucumber/cucumber-rails', branch: 'master_rails4_test', require: false

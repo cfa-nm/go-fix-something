@@ -33,24 +33,15 @@ class IdeasController < ApplicationController
   end
 
   def upvote
-    @idea.upvote(current_user).save
-    respond_with @idea do |format|
-      format.html { redirect_to :back }
-    end
+    vote(:up)
   end
 
   def downvote
-    @idea.downvote(current_user).save
-    respond_with @idea do |format|
-      format.html { redirect_to :back }
-    end
+    vote(:down)
   end
 
   def cancel_vote
-    @idea.cancel_vote(current_user).save
-    respond_with @idea do |format|
-      format.html { redirect_to :back }
-    end
+    vote(:cancel)
   end
 
   private
@@ -60,5 +51,18 @@ class IdeasController < ApplicationController
 
     def idea_params
       params.require(:idea).permit(:text, :user_id)
+    end
+
+    def vote(type)
+      case type
+      when :up     then @idea.upvote(current_user)
+      when :down   then @idea.downvote(current_user)
+      when :cancel then @idea.cancel_vote(current_user)
+      end
+      @idea.save
+      respond_with @idea do |format|
+        format.html { redirect_to :back }
+        format.json { render json: { vote_total: @idea.vote_total } }
+      end
     end
 end
