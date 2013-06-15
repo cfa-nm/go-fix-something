@@ -52,7 +52,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'responders'
 
 gem 'js-routes'
-gem 'eco'
+gem 'handlebars_assets'
 gem 'backbone-on-rails'
 
 group :development, :test do

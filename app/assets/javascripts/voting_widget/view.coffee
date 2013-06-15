@@ -1,5 +1,5 @@
 class VotingWidget.View extends Backbone.View
-  template: JST['voting_widget/template']
+  template: HandlebarsTemplates['voting_widget']
 
   events:
     'click .upvote'     : -> @model.upvote()

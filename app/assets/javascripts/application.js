@@ -13,9 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require js-routes
+//= require handlebars.runtime
 //= require underscore
 //= require backbone
 //= require foundation
+//= require_tree ../templates
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

@@ -39,7 +39,7 @@ class VotingWidget.Model extends Backbone.Model
       canCancelVote: true
 
   cancelvote: ->
-    return unless @get('canDownvote')
+    return unless @get('canCancelVote')
 
     $.ajax(
       url: Routes.cancelVoteIdeaPath(@get('ideaId'), format: 'json')

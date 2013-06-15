@@ -1,0 +1,17 @@
+({{voteTotal}})
+
+<div class="button-group radius" style="display:inline-block;vertical-align:middle">
+  <button class="tiny secondary button downvote {{#unless canDownvote}}disabled{{/unless}}">
+    <i class="entypo thumbs-down"></i>
+  </button>
+
+  {{#if canCancelVote}}
+    <button class="tiny secondary button cancelvote">
+      <i class="entypo block"></i>
+    </button>
+  {{/if}}
+
+  <button class="tiny secondary button upvote {{#unless canUpvote}}disabled{{/unless}}">
+    <i class="entypo thumbs-up"></i>
+  </button>
+</div>
