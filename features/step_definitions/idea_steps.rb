@@ -29,7 +29,7 @@ end
 
 When(/^I cancel my (?:up|down)?vote$/) do
   visit idea_path(@idea)
-  find(".cancel_vote").click
+  find(".cancelvote").click
 end
 
 Then(/^the idea should( not)? be (up|down)voted$/) do |negate, type|

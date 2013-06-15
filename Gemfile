@@ -58,6 +58,7 @@ gem 'backbone-on-rails'
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.2'
   gem 'cucumber-rails', github: 'cucumber/cucumber-rails', branch: 'master_rails4_test', require: false
+  gem 'poltergeist'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'faker'
   gem 'database_cleaner', '~> 1.0.1'
