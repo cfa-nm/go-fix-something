@@ -1,12 +1,25 @@
 class Idea
   include Mongoid::Document
+  include AASM
+
   field :text, type: String
   field :upvoters, type: Array, default: []
   field :downvoters, type: Array, default: []
+  field :aasm_state, type: String
+
   belongs_to :user
   embeds_many :comments
 
   delegate :email, to: :user, prefix: true, allow_nil: true
+
+  aasm do
+    state :suggestion, initial: true
+    state :project
+
+    event :promote do
+      transitions from: :suggestion, to: :project
+    end
+  end
 
   def upvote(user)
     downvoters.delete(user.id)

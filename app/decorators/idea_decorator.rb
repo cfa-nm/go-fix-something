@@ -6,6 +6,14 @@ class IdeaDecorator < Draper::Decorator
     h.auto_link(h.simple_format(object.text))
   end
 
+  def owned_by?(user)
+    object.user && (object.user.id == user.id)
+  end
+
+  def owned_by_current_user?
+    owned_by? h.current_user
+  end
+
   def can_vote?
     h.user_signed_in? && (object.user != h.current_user)
   end

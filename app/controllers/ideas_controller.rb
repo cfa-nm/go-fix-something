@@ -1,7 +1,6 @@
 class IdeasController < ApplicationController
   respond_to :html, :json
-  before_action :set_idea,
-    only: [:show, :edit, :update, :destroy, :upvote, :downvote, :cancel_vote]
+  before_action :set_idea, except: [:index, :new, :create]
   decorates_assigned :idea
 
   def index
@@ -32,6 +31,8 @@ class IdeasController < ApplicationController
     respond_with @idea.destroy
   end
 
+  # non-restful actions
+
   def upvote
     vote(:up)
   end
@@ -42,6 +43,11 @@ class IdeasController < ApplicationController
 
   def cancel_vote
     vote(:cancel)
+  end
+
+  def promote
+    @idea.promote!
+    respond_with @idea
   end
 
   private

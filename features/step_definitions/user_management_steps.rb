@@ -1,10 +1,10 @@
 Given(/^I am a signed in user$/) do
-  user = create(:user, email: 'test_user@example.com', password: 'password')
+  @user = create(:user, email: 'test_user@example.com', password: 'password')
   step "I sign in"
 end
 
 Given(/^I am a signed out user$/) do
-  user = create(:user, password: 'password')
+  @user = create(:user, password: 'password')
 end
 
 When(/^I sign up$/) do
@@ -27,5 +27,5 @@ When(/^I sign out$/) do
 end
 
 Then(/^I should be asked to sign up or sign in$/) do
-  pending # express the regexp above with the code you wish you had
+  pending
 end

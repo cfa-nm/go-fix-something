@@ -5,6 +5,17 @@ describe Idea do
 
   subject { build(:idea) }
 
+  describe "States" do
+    describe 'initial' do
+      it { should be_suggestion }
+    end
+
+    describe 'promotion' do
+      before { subject.promote }
+      it { should be_project }
+    end
+  end
+
   describe "Voting" do
     it "should allow a user to upvote" do
       expect{subject.upvote(user)}.to change{subject.vote_total}.by(1)

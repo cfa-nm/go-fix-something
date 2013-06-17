@@ -50,6 +50,7 @@ gem 'draper'
 gem 'rails_autolink'
 gem 'devise', '~> 3.0.0.rc'
 gem 'responders'
+gem 'aasm'
 
 gem 'js-routes'
 gem 'handlebars_assets'
@@ -62,4 +63,5 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'faker'
   gem 'database_cleaner', '~> 1.0.1'
+  gem 'launchy'
 end

@@ -4,6 +4,8 @@ GoFixSomething::Application.routes.draw do
       patch :upvote
       patch :downvote
       patch :cancel_vote
+
+      patch :promote
     end
 
     resources :comments, except: [:index, :show, :new]

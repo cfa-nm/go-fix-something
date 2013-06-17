@@ -11,12 +11,20 @@
         %i.entypo.cross
   %hr
 
-  .voting-widget{ data: { idea_id: idea.id,
-                          vote_total: idea.vote_total,
-                          can_upvote: idea.can_upvote?,
-                          can_downvote: idea.can_downvote?,
-                          can_cancel_vote: idea.can_cancel_vote? } }
-    (#{idea.vote_total})
+  .clearfix
+    .voting-widget.left{ data: { idea_id: idea.id,
+                                 vote_total: idea.vote_total,
+                                 can_upvote: idea.can_upvote?,
+                                 can_downvote: idea.can_downvote?,
+                                 can_cancel_vote: idea.can_cancel_vote? } }
+      (#{idea.vote_total})
+
+    - if idea.owned_by_current_user?
+      %ul.button-group.right
+        %li= link_to( 'Promote',
+                      promote_idea_path(idea),
+                      method: 'patch',
+                      class: %w[tiny promote button] )
 
   %br
 
