@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '~> 4.0.0'
 
-gem 'mongoid', github: 'mongoid/mongoid', ref: '11e45e'
+gem 'mongoid', github: 'mongoid/mongoid', branch: 'master'
+gem 'bson_ext'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -58,7 +59,7 @@ gem 'backbone-on-rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.2'
-  gem 'cucumber-rails', github: 'cucumber/cucumber-rails', branch: 'master_rails4_test', require: false
+  gem 'cucumber-rails', require: false
   gem 'poltergeist'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'faker'
