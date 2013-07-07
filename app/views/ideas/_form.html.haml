@@ -1,13 +1,9 @@
-= form_for @idea || Idea.new do |f|
-  - if defined?(@idea) && @idea.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(idea.errors.count, "error")} prohibited this idea from being saved:"
-      %ul
-        - idea.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @idea || Idea.new do |f|
+  = f.error_notification
 
+  .inputs
+    = f.input :text, as: :text, label: false, input_html: { rows: 6, style: "height:auto" }
+    = f.hidden_field :user_id, value: user_signed_in? ? current_user.id : nil
 
-  = f.text_area :text, rows: 6, style: "height:auto"
-  = f.hidden_field :user_id, value: user_signed_in? ? current_user.id : nil
-
-  = f.submit "Okay then, let's get started!", class: %w[button expand]
+  .actions
+    = f.submit "Okay then, let's get started!", class: %w[button expand]

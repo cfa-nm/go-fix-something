@@ -2,9 +2,10 @@
   idea ||= @idea
   comment ||= idea.comments.new
 
-= form_for [idea, comment], html: { class: 'row' } do |f|
-  = f.hidden_field :author_id, value: current_user.try(:id)
-  .large-9.columns
-    = f.text_area :text
-  .large-3.columns
-    = f.submit class: 'button expand'
+= simple_form_for [idea, comment] do |f|
+  .row
+    = f.hidden_field :author_id, value: current_user.try(:id)
+    .inputs.large-9.columns
+      = f.input :text, as: :text, label: false
+    .actions.large-3.columns
+      = f.submit class: 'button expand'

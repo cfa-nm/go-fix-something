@@ -47,6 +47,7 @@ end
 gem 'haml-rails'
 gem 'zurb-foundation', '~> 4.2.1'
 gem 'high_voltage', '~> 1.2.2'
+gem 'simple_form'
 gem 'draper'
 gem 'rails_autolink'
 gem 'devise', '~> 3.0.0.rc'
