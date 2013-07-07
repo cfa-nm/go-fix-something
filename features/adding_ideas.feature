@@ -8,7 +8,6 @@ I want to add new ideas
     When I try to create an idea
     Then my idea should be in the system
 
-  @pending
   Scenario: Creating as a signed out user
     Given I am a signed out user
     When I try to create an idea
@@ -16,7 +15,6 @@ I want to add new ideas
     When I sign in
     Then my idea should be in the system
 
-  @pending
   Scenario: Creating as a guest
     When I try to create an idea
     Then I should be asked to sign up or sign in

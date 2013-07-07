@@ -7,7 +7,7 @@ class IdeaDecorator < Draper::Decorator
   end
 
   def owned_by?(user)
-    object.user && (object.user.id == user.id)
+    user && object.user && (object.user.id == user.id)
   end
 
   def owned_by_current_user?

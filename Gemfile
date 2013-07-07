@@ -65,4 +65,7 @@ group :development, :test do
   gem 'faker'
   gem 'database_cleaner', '~> 1.0.1'
   gem 'launchy'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
