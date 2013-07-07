@@ -10,6 +10,9 @@ class Idea
   belongs_to :user
   embeds_many :comments
 
+  validates_presence_of :user
+  validates_presence_of :text
+
   delegate :email, to: :user, prefix: true, allow_nil: true
 
   aasm do

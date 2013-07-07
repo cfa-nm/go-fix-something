@@ -1,7 +1,5 @@
-- idea ||= Idea.new
-
-= form_for idea do |f|
-  - if idea.errors.any?
+= form_for @idea || Idea.new do |f|
+  - if defined?(@idea) && @idea.errors.any?
     #error_explanation
       %h2= "#{pluralize(idea.errors.count, "error")} prohibited this idea from being saved:"
       %ul

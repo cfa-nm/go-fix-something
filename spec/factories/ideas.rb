@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :idea do
     text { Faker::Lorem.paragraph }
-    user nil
+    user
   end
 end
