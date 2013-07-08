@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/josevalim/inherited_resources.git
+  revision: 2656ca0cea51cc7469be1d30cace24752d5b4e3b
+  specs:
+    inherited_resources (1.4.0)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0.0.rc)
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: d52c33bce36a2e427634c3483128f739213798e3
   branch: master
@@ -122,6 +130,9 @@ GEM
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     high_voltage (1.2.3)
     hike (1.2.3)
     http_parser.rb (0.5.3)
@@ -173,7 +184,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     request_store (1.0.5)
-    responders (0.6.5)
+    responders (1.0.0.rc)
+      railties (>= 3.2, < 5)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -240,6 +252,7 @@ DEPENDENCIES
   haml-rails
   handlebars_assets
   high_voltage (~> 1.2.2)
+  inherited_resources!
   jquery-rails
   js-routes
   launchy
@@ -247,7 +260,6 @@ DEPENDENCIES
   poltergeist
   rails (~> 4.0.0)
   rails_autolink
-  responders
   rspec-rails (~> 2.13.2)
   sass-rails (~> 4.0.0.rc1)
   sdoc

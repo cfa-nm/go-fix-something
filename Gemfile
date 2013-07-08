@@ -51,7 +51,7 @@ gem 'simple_form'
 gem 'draper'
 gem 'rails_autolink'
 gem 'devise', '~> 3.0.0.rc'
-gem 'responders'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'aasm'
 
 gem 'js-routes'

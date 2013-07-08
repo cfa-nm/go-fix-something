@@ -1,74 +1,40 @@
-class IdeasController < ApplicationController
+class IdeasController < InheritedResources::Base
   respond_to :html, :json
-  before_action :set_idea, except: [:index, :new, :create]
   decorates_assigned :idea
 
-  def index
-    respond_with @ideas = Idea.all
-  end
-
-  def show
-    respond_with @idea
-  end
-
-  def new
-    respond_with @idea = Idea.new
-  end
-
-  def edit
-    respond_with @idea
-  end
-
-  def create
-    respond_with @idea = Idea.create(idea_params)
-  end
-
-  def update
-    respond_with @idea.update(idea_params)
-  end
-
-  def destroy
-    respond_with @idea.destroy
-  end
-
-  # non-restful actions
+  custom_actions resource: [:upvote, :downvote, :cancel_vote, :promote]
 
   def upvote
-    vote(:up)
+    upvote! { |format| vote(:up, format) }
   end
 
   def downvote
-    vote(:down)
+    downvote! { |format| vote(:down, format) }
   end
 
   def cancel_vote
-    vote(:cancel)
+    cancel_vote! { |format| vote(:cancel, format) }
   end
 
   def promote
-    @idea.promote!
-    respond_with @idea
+    promote! { @idea.promote! }
   end
 
   private
-    def set_idea
-      @idea = Idea.find(params[:id])
-    end
 
-    def idea_params
-      params.require(:idea).permit(:text, :user_id)
-    end
+  def permitted_params
+    params.permit(idea: [:text, :user_id])
+  end
 
-    def vote(type)
-      case type
-      when :up     then @idea.upvote(current_user)
-      when :down   then @idea.downvote(current_user)
-      when :cancel then @idea.cancel_vote(current_user)
-      end
-      @idea.save
-      respond_with @idea do |format|
-        format.html { redirect_to :back }
-        format.json { render json: { vote_total: @idea.vote_total } }
-      end
+  def vote(type, format)
+    case type
+    when :up     then @idea.upvote(current_user)
+    when :down   then @idea.downvote(current_user)
+    when :cancel then @idea.cancel_vote(current_user)
     end
+    @idea.save
+
+    format.html { redirect_to :back }
+    format.json { render json: { vote_total: @idea.vote_total } }
+  end
 end
