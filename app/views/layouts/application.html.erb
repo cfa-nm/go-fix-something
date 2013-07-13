@@ -29,7 +29,7 @@
 
     <div id="content" class="row">
       <div class="small-12 columns">
-        <%= yield %>
+        <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </div>
     
