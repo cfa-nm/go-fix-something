@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - "2.0.0"
+services:
+  - mongodb
+# uncomment this line if your project needs to run something other than `rake`:
+script: bundle exec rake travis
