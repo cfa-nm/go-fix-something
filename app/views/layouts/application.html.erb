@@ -25,7 +25,11 @@
   <body>
     <%= render 'shared/navbar' %>
 
-    <%= render 'shared/flash' %>
+    <div class="row">
+      <div class="small-12 columns">
+        <%= flash_messages %>
+      </div>
+    </div>
 
     <div id="content" class="row">
       <div class="small-12 columns">
