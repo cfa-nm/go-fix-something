@@ -4,6 +4,7 @@ Feature: Voting on ideas
   Background:
     Given I am a signed in user
     And an idea exists
+    And I am on that idea's page
 
   Scenario: Voting on ideas
     When I upvote that idea

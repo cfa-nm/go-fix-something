@@ -14,8 +14,9 @@ class VotingWidget.Model extends Backbone.Model
     return unless @get('canUpvote')
 
     $.ajax(
-      url: Routes.upvoteIdeaPath(@get('ideaId'), format: 'json')
+      url: Routes.voteIdeaPath(@get('ideaId'), format: 'json')
       type: 'PATCH'
+      data: { type: 'up' }
     ).done (data) =>
       @set(voteTotal: data.vote_total)
 
@@ -28,8 +29,9 @@ class VotingWidget.Model extends Backbone.Model
     return unless @get('canDownvote')
 
     $.ajax(
-      url: Routes.downvoteIdeaPath(@get('ideaId'), format: 'json')
+      url: Routes.voteIdeaPath(@get('ideaId'), format: 'json')
       type: 'PATCH'
+      data: { type: 'down' }
     ).done (data) =>
       @set(voteTotal: data.vote_total)
 
@@ -42,8 +44,9 @@ class VotingWidget.Model extends Backbone.Model
     return unless @get('canCancelVote')
 
     $.ajax(
-      url: Routes.cancelVoteIdeaPath(@get('ideaId'), format: 'json')
+      url: Routes.voteIdeaPath(@get('ideaId'), format: 'json')
       type: 'PATCH'
+      data: { type: 'cancel' }
     ).done (data) =>
       @set(voteTotal: data.vote_total)
 

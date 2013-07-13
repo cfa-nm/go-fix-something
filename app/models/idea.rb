@@ -30,16 +30,31 @@ class Idea
     self
   end
 
+  def upvote!(user)
+    upvote(user)
+    save!
+  end
+
   def downvote(user)
     upvoters.delete(user.id)
     downvoters.push(user.id) unless downvoters.include? user.id
     self
   end
 
+  def downvote!(user)
+    downvote(user)
+    save!
+  end
+
   def cancel_vote(user)
     upvoters.delete(user.id)
     downvoters.delete(user.id)
     self
+  end
+
+  def cancel_vote!(user)
+    cancel_vote(user)
+    save!
   end
 
   def vote_total
