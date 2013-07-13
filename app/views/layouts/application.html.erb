@@ -32,7 +32,9 @@
         <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
     </div>
-    
+
     <%= javascript_include_tag "application" %>
+
+    <%= render 'shared/modals' %>
   </body>
 </html>

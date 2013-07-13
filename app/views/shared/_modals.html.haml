@@ -1,0 +1,28 @@
+- unless user_signed_in?
+  = modal :signUpModal, class: ['small'] do
+    %h2 Sign up
+    
+    = simple_form_for('user', url: user_session_path) do |f|
+      .form-inputs
+        = f.input :email, :required => true, :autofocus => true
+        = f.input :password, :required => true
+        = f.input :password_confirmation, :required => true
+
+      .form-actions
+        = f.button :submit, "Sign up", class: "small expand"
+
+    %a.close-reveal-modal &#215;
+
+  = modal :signInModal, class: ['small'] do
+    %h2 Sign in
+    
+    = simple_form_for('user', url: user_session_path) do |f|
+      .form-inputs
+        = f.input :email, :required => false, :autofocus => true
+        = f.input :password, :required => false
+        = f.input :remember_me, as: :boolean
+
+      .form-actions
+        = f.button :submit, 'Sign in', class: 'small expand'
+
+    %a.close-reveal-modal &#215;

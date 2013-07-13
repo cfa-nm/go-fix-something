@@ -9,21 +9,25 @@ end
 
 When(/^I sign up$/) do
   visit new_user_path
-  fill_in 'Email', with: 'test_user@example.com'
-  fill_in 'Password', with: 'password'
-  fill_in 'Password confirmation', with: 'password'
-  click_button 'Sign up'
+  within('#new_user') do
+    fill_in 'Email', with: 'test_user@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
+  end
 end
 
 When(/^I sign in$/) do
   visit new_user_session_path
-  fill_in 'user_email', with: 'test_user@example.com'
-  fill_in 'user_password', with: 'password'
-  click_button 'Sign in'
+  within('#new_user') do
+    fill_in 'user_email', with: 'test_user@example.com'
+    fill_in 'user_password', with: 'password'
+    click_button 'Sign in'
+  end
 end
 
 When(/^I sign out$/) do
-  page.driver.submit :delete, destroy_user_session_path, {}
+  page.driver.submit :delete, destroy_user_session_path
 end
 
 Then(/^I should be asked to sign up or sign in$/) do
